@@ -84,3 +84,4 @@ class ThreadedReceiver(threading.Thread):
 if __name__ == "__main__":
     receiver = ThreadedReceiver("127.0.0.1", 8080)
     receiver.start()
+    receiver.join()  # keep main thread alive; Python 3.12+ refuses new threads at interpreter shutdown

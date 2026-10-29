@@ -21,3 +21,17 @@ yyy.bin
 /project1_sender/log_keyUtils.txt
 /project1_sender/log_sender.txt
 /project1_receiver/log_receiver.txt
+
+# CipherLink local-only state (never commit: private key, trust list, received data)
+.venv/
+identities/
+received_files/
+peers.json
+peers.json.corrupt-*
+transfer_history.json
+transfer_history.json.corrupt-*
+cipherlink.log
+config.json
+*.part
+.pytest_cache/
+.ruff_cache/

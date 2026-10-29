@@ -1,0 +1,4 @@
+# CipherLink runtime dependencies (tested on Python 3.12, macOS arm64).
+cryptography==50.0.2
+PyQt6==6.12.0
+# The legacy CLI prototype in project1_* additionally needs: pycryptodome==4.2.0
