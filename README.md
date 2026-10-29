@@ -68,7 +68,7 @@ reasoning is in [SECURITY.md](SECURITY.md), and a viva Q&A is in [VIVA.md](VIVA.
 
 ## Requirements
 
-- **Python 3.11 or newer.** Developed and tested with Python 3.12.0.
+- **Python 3.12 or newer.** Developed and tested with Python 3.12.0.
 - **Operating systems:** macOS (tested on macOS 26, Apple Silicon). Windows and Linux
   should work, since the code includes platform guards, but are **not yet tested**.
 - Both laptops on the same LAN, with TCP port **52520** reachable (see
@@ -86,6 +86,31 @@ source .venv/bin/activate            # Windows: .venv\Scripts\activate
 pip install -r requirements.txt      # or requirements-dev.txt to run the tests
 python main.py
 ```
+
+### Quick start (macOS / Linux)
+
+```bash
+./run.sh                 # or: ./run.sh --home ~/cipherlink-b
+```
+
+`run.sh` works from any directory. It finds Python 3.12+ (or uses `PYTHON=/path/to/python`),
+creates `.venv` if it is missing, installs `requirements.txt` only when that file has changed,
+and starts `main.py` with any arguments you pass. It respects `CIPHERLINK_HOME` and never
+touches your identity, peers, history or received files. On Windows use the manual steps above.
+
+**Two instances on one computer** (for example, to test locally) need separate data
+directories *and* different ports, or the second one shows "Not listening". Give each data
+directory its own `config.json` with its own `listen_port`:
+
+```bash
+mkdir -p ~/cl-a ~/cl-b
+echo '{"listen_port": 52520}' > ~/cl-a/config.json
+echo '{"listen_port": 52521}' > ~/cl-b/config.json
+./run.sh --home ~/cl-a &      # first instance
+./run.sh --home ~/cl-b        # second instance
+```
+
+When adding each as a trusted peer of the other, use `127.0.0.1` and the other's port.
 
 Run from source as shown. `pip install .` also works, but it installs generic top-level
 module names (`config`, `main`) into the environment, so only use it inside a dedicated

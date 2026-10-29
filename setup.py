@@ -21,7 +21,7 @@ setup(
     url="https://github.com/soundaryakl/hybrid-crypto-file-transfer",
     author="CipherLink contributors; Brian HVB (original CLI prototype)",
     license="MIT",
-    python_requires=">=3.11",
+    python_requires=">=3.12",
     py_modules=["main", "config", "crypto_engine", "network_p2p", "peer_store", "transfer_history", "gui_app"],
     install_requires=requirements,
     entry_points={"gui_scripts": ["cipherlink=main:main"]},
